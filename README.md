@@ -1,5 +1,5 @@
 # WENOEXT-project
-Aim: High resolution fvm simulation using [WENOEXT](https://github.com/WENO-OF/WENOEXT) scheme
+Aim: High resolution fvm simulation using [blastfoam](https://github.com/synthetik-technologies/blastfoam) scheme 
 
 ### Installation
 ```
