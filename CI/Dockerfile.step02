@@ -1,0 +1,26 @@
+FROM ghcr.io/jiaqiwang969/wenoext:main
+
+CMD [ "/bin/sh" ]
+
+#RUN apt-get update && apt-get install -y git
+# Add the library src to our build env
+# FROM env AS devel
+# Create lib directory
+ENV FOAM_INST_DIR=/opt/OpenFOAM
+ENV VERSION=v2012
+ENV foamDotFile="$FOAM_INST_DIR/OpenFOAM-${VERSION}/etc/bashrc"
+
+RUN mkdir -p $FOAM_INST_DIR/build/
+WORKDIR $FOAM_INST_DIR/build
+# Bundle lib source
+COPY --chown=ofuser:ofuser . .
+
+
+# Update git submodules
+#RUN git submodule init && git submodule update
+
+# First compile the code
+RUN . $foamDotFile && ./Allwclean && ./Allwmake -f -j
+
+# Run all unit tests
+RUN . $foamDotFile && cd tests && ./runTest
