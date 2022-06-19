@@ -109,7 +109,7 @@ RUN apt-get update -qq\
    qtbase5-dev \
 #AEG:No scotch because it installs openmpi which later messes up with MPICH
 #    Therefore, ThirdParty scotch is the one to be installed and used by openfoam.
-#AEG:NoScotch:   libscotch-dev \
+   libscotch-dev \
 #AEG:No CGAL because third party will be used
 #AEG:NoCGAL:   libcgal-dev \
 #AEG:These libraries are needed for CGAL (system and third party) (if needed, change libgmp-dev for libgmp3-dev):
@@ -137,7 +137,7 @@ WORKDIR $OFINSTDIR
 # && rm -f ThirdParty-${OFVERSION}.tgz
 
 RUN git clone https://github.com/OpenFOAM/OpenFOAM-9.git OpenFOAM-${OFVERSION}\
-    && git clone https://develop.openfoam.com/Development/ThirdParty-common.git ThirdParty
+    &&  git clone https://github.com/OpenFOAM/ThirdParty-${OFVERSIONGIT}.git ThirdParty
 
 
 
