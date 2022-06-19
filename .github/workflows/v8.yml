@@ -21,7 +21,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: ghcr.io/jiaqiwang969/wenoext
+          images: ghcr.io/jiaqiwang969/blastfoam
           tag-sha: true
           tag-edge: false
           tag-latest: true
